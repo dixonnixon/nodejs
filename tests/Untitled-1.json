@@ -1,0 +1,95 @@
+POST http://localhost:3000/dishes HTTP/1.1
+content-type: application/json
+
+{
+    "id": 0,
+    "name": "Uthappizza23",
+    "image": "images/uthappizza.png",
+    "category": "mains",
+    "label": "Hot",
+    "price": "4.99",
+    "featured": true,
+    "description": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer."
+}
+
+
+###
+
+POST http://localhost:3000/dishes HTTP/1.1
+content-type: application/json
+
+{
+    "id": 0,
+    "name": "Uthappizza23",
+    "image": "images/uthappizza.png",
+    "category": "mains",
+    "label": "Hot",
+    "price": "4.99",
+    "featured": true,
+    "description": "A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.",
+    "comments": [
+        {
+            "rating": 2,
+            "comment": "It's your birthday, we're gonna party!",
+            "author": "25 Cent",
+            "date": "2011-12-02T17:57:28.556094Z"
+          },
+          {
+            "rating": 5,
+            "comment": "Imagine all the eatables, living in conFusion!",
+            "author": "John Lemon",
+            "date": "2012-10-16T17:57:28.556094Z"
+          }
+    ]
+}
+  
+###
+
+POST http://localhost:3000/promotions HTTP/1.1
+content-type: application/json
+
+{
+  "id": 0,
+  "name": "Weekend Grand Buffet",
+  "image": "images/buffet.png",
+  "label": "New",
+  "price": "19.99",
+  "featured": true,
+  "description": "Featuring mouthwatering combinations with a choice of five different salads, six enticing appetizers, six main entrees and five choicest desserts. Free flowing bubbly and soft drinks. All for just $19.99 per person "
+}
+
+###
+
+POST http://localhost:3000/users/signup HTTP/1.1
+content-type: application/json
+
+{
+  "username": "test2",
+  "password": "test2"
+}
+
+
+###
+
+POST http://localhost:3000/users/login HTTP/1.1
+content-type: application/json
+authorization: Basic dXNlcjpwYXNz
+
+{
+  "username": "test",
+  "password": "test"
+}
+  
+###
+
+POST http://localhost:3000/users/login HTTP/1.1
+content-type: application/json
+authorization: Basic YWRtaW46YWRtaW4=
+
+
+###
+
+
+
+
+
