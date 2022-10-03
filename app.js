@@ -29,7 +29,8 @@ const Dishes = require("./models/dishes");
 const { ServerApiVersion } = require('mongodb');
 
 
-const credentials = 'C:\\Users\\tyran\\Documents\\mongoDbCloud\\X509-cert-7894173848214157189.pem';
+const credentials = 'C:\\Users\\tyran\\Documents\\mongoDbCloud\\X509-cert-4934789246546900944.pem';
+// const credentials = 'C:\\Users\\tyran\\Documents\\mongoDbCloud\\X509-cert-7894173848214157189.pem';
 const url = config.mongoUrl;
 
 async function run() {
@@ -39,7 +40,7 @@ async function run() {
           sslCert: credentials,
           serverApi: ServerApiVersion.v1
         });
-
+      console.log(connect);
 
       // mongoose.connection.close()
   }
@@ -55,14 +56,30 @@ async function run() {
 run().catch(console.dir);
 
 
+
+//check modgodb available
+
+
 var app = express();
 app.all('*', (req, res, next) => {
+  console.log(req.secure, 'https://' + req.hostname + ":" + app.get('port') + req.url);
+
   if(req.secure) {
     return next();
   }
   else {
+    console.log("redirected to: ", 
+    'https://' + req.hostname + ":" + app.get('port') + req.url
+    );
     res.redirect(307, 'https://' + req.hostname + ":" + app.get('port') + req.url);
   }
+});
+
+
+mongoose.connection.on("error", (error) => {
+  console.log(error);
+  process.exit(0);
+
 });
 
 
@@ -93,7 +110,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 
 

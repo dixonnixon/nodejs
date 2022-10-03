@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const cors = require('./cors');
 
 const Dishes = require("../models/dishes");
@@ -67,6 +67,7 @@ dishRouter.route('/')
     // })
     // .get(authenticate.verifyUser, (req,res,next) => {
     .get(cors.cors, (req,res,next) => {
+        // console.log("dishes", req.query, Dishes);
         // if(!req.user) {
         //     let err = new Error("you are not logged in!");
         //     err.status = 403;
@@ -77,7 +78,7 @@ dishRouter.route('/')
         Dishes.find(req.query)
             // .populate('comments.author')
         .then((dishes) => {
-                // console.log(dishes);
+                console.log(dishes);
                 res.statusCode = 200;
                 res.setHeader('Content-Type', 'application/json');
                 // res.end('Will send all the dishes to you!');

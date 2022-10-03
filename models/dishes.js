@@ -4,7 +4,7 @@ require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 const Schema = mongoose.Schema;
 
-
+console.log("Dishes model");
 
 const dishSchema = new Schema({
     name: {

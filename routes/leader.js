@@ -50,7 +50,9 @@ leaderRouter.route('/:leaderId')
     });
 
 leaderRouter.route('/')
-    .options(cors.configureWithOptions, (req, res) => { res.sendStatus(200); })
+    .options(cors.configureWithOptions, (req, res) => { 
+        console.log("leaders reached");
+        res.sendStatus(200); })
 
     // .all((req,res,next) => {
     //     res.statusCode = 200;
